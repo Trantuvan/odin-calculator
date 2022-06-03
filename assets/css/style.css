@@ -1,0 +1,49 @@
+/**
+ * base styles and typography
+ * ---------------
+ */
+:root {
+  --ff-primary: "League Spartan", sans-serif;
+  --clr-main-background: hsl(222, 26%, 31%);
+  --clr-keypad: hsl(223, 31%, 20%);
+  --clr-screen: hsl(224, 36%, 15%);
+  --clr-key: hsl(225, 21%, 49%);
+  --clr-key-shadow: hsl(224, 28%, 35%);
+  --clr-key-toggle: hsl(6, 63%, 50%);
+  --clr-key-red-shadow: hsl(6, 70%, 34%);
+  --clr-lightgray: hsl(30, 25%, 89%);
+  --clr-gray-orange: hsl(28, 16%, 65%);
+
+  /* text color */
+  --clr-text-gray-yellow: hsl(60, 10%, 19%);
+  --clr-text-white: hsl(0, 0, 100%);
+
+  /* font-size numbers*/
+  --fs-numbers: 32px;
+
+  --fw-700: 700;
+  --fw-300: 300;
+  --fw-400: 400;
+}
+
+/*******************
+ Base styles
+ *******************/
+html {
+  font-size: var(--fs-numbers);
+  font-weight: var(--fw-700);
+  font-family: var(--ff-primary);
+  line-height: 1.4;
+}
+
+body {
+  display: flex;
+  background-color: hsl(222, 26%, 31%);
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/*******************
+ Calculator
+ *******************/

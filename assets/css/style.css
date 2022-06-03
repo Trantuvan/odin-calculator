@@ -4,8 +4,9 @@
  */
 :root {
   --ff-primary: "League Spartan", sans-serif;
+
   --clr-main-background: hsl(222, 26%, 31%);
-  --clr-keypad: hsl(223, 31%, 20%);
+  --clr-numpad-background: hsl(223, 31%, 20%);
   --clr-screen: hsl(224, 36%, 15%);
   --clr-key: hsl(225, 21%, 49%);
   --clr-key-shadow: hsl(224, 28%, 35%);
@@ -16,7 +17,7 @@
 
   /* text color */
   --clr-text-gray-yellow: hsl(60, 10%, 19%);
-  --clr-text-white: hsl(0, 0, 100%);
+  --clr-text-white: hsl(0, 0%, 100%);
 
   /* font-size numbers*/
   --fs-numbers: 32px;
@@ -24,6 +25,8 @@
   --fw-700: 700;
   --fw-300: 300;
   --fw-400: 400;
+
+  --bd-radius: 10px;
 }
 
 /*******************
@@ -38,12 +41,78 @@ html {
 
 body {
   display: flex;
+  flex-direction: column;
   background-color: hsl(222, 26%, 31%);
   justify-content: center;
-  align-items: center;
   height: 100vh;
+  width: 75vh;
+  max-width: 1440px;
+  margin: 0 auto;
 }
 
 /*******************
  Calculator
  *******************/
+.hero-text {
+  color: var(--clr-text-white);
+  font-size: 30px;
+  margin-left: 4px;
+}
+
+.screen {
+  margin-bottom: 30px;
+  height: 150px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  background-color: var(--clr-screen);
+  color: var(--clr-text-white);
+  border-radius: var(--bd-radius);
+}
+
+.numpad {
+  padding: 30px;
+  border-radius: var(--bd-radius);
+  background-color: var(--clr-numpad-background);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.btn {
+  cursor: pointer;
+  padding: 16px 24px;
+  background-color: var(--clr-lightgray);
+  color: var(--clr-text-gray-yellow);
+  border-radius: var(--bd-radius);
+  box-shadow: 0px 3px 3px 1px hsl(224deg 28% 35%);
+}
+
+.btn:hover {
+  background-color: var(--clr-text-white);
+}
+
+.function {
+  color: var(--clr-text-white);
+  text-transform: uppercase;
+  background-color: var(--clr-key);
+}
+
+.function:hover {
+  background-color: var(--clr-key-shadow);
+}
+
+#reset {
+  grid-column: span 2;
+}
+
+#equal {
+  grid-column: span 2;
+  color: var(--clr-text-white);
+  background-color: var(--clr-key-toggle);
+}
+#equal:hover {
+  background-color: var(--clr-key-red-shadow);
+}

@@ -2,15 +2,15 @@ const input = document.querySelector(".input");
 const result = document.querySelector(".result");
 const buttons = document.querySelectorAll(".btn");
 let operation = "";
-let firstOperand = 0;
-let secondOperand = 0;
+let firstOperand;
+let secondOperand;
 
-const OPERATOR = Object.freeze({
-  PLUS: "+",
-  SUBTRACT: "-",
-  DIVIDE: "÷",
-  MULTIPLY: "x",
-});
+const operators = {
+  plus: 0,
+  subtract: 0,
+  divide: 0,
+  multiply: 0,
+};
 
 buttons.forEach((btn) => {
   btn.addEventListener("click", (evt) => {
@@ -18,10 +18,33 @@ buttons.forEach((btn) => {
 
     switch (btnClassArray[1]) {
       case "number":
-      case "operator":
       case "fraction":
+      case "operator":
         operation += evt.target.textContent;
         input.textContent = operation;
+
+        if (evt.target.classList.contains("operator")) {
+          switch (evt.target.textContent) {
+            case "+":
+              operators.plus++;
+              break;
+
+            case "-":
+              operators.subtract++;
+              break;
+
+            case "÷":
+              operators.divide++;
+              break;
+
+            case "x":
+              operators.plus++;
+              break;
+            default:
+              break;
+          }
+        }
+        getOperand(operation);
         break;
 
       case "function":
@@ -32,12 +55,14 @@ buttons.forEach((btn) => {
           input.textContent = operation;
         } else {
           operation = "";
-          input.textContent = operation;
+          input.textContent = "";
+          result.textContent = "";
         }
         break;
 
       case "equal":
-        console.log(operation);
+        let operationResult = add(firstOperand, secondOperand);
+        result.textContent = operationResult;
         break;
 
       default:
@@ -46,8 +71,11 @@ buttons.forEach((btn) => {
   });
 });
 
-// function updateOperands() {
-//   const operationArray = operation.split("+");
-//   firstOperand = operationArray[0];
-//   secondOperand = operationArray[1];
-// }
+function getOperand(operation) {
+  if (operators.plus > 0) {
+    const operationArray = operation.split("+");
+    firstOperand = +operationArray.shift();
+    secondOperand = +operationArray.pop();
+    operation = operationArray.join("");
+  }
+}

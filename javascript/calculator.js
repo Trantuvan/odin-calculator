@@ -25,10 +25,10 @@ export function operate(operator, firstOperand, secondOperand) {
     case "-":
       return subtract(firstOperand, secondOperand);
 
-    case "*":
+    case "x":
       return multiply(firstOperand, secondOperand);
 
-    case "/":
+    case "÷":
       return divide(firstOperand, secondOperand);
 
     default:

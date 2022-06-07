@@ -67,3 +67,63 @@ function getOperation(inputArray) {
     }
   });
 }
+
+const operators = {
+  "+": "+",
+  "-": "-",
+  "*": "x",
+  "/": "÷",
+};
+
+window.addEventListener("keydown", (evt) => {
+  // * display input on screenInput
+  if (
+    (evt.key >= 0 && evt.key <= 9) ||
+    operators[evt.key] === "+" ||
+    operators[evt.key] === "-" ||
+    operators[evt.key] === "x" ||
+    operators[evt.key] === "÷"
+  ) {
+    switch (evt.key) {
+      case "+":
+        operation += operators[evt.key];
+        break;
+
+      case "-":
+        operation += operators[evt.key];
+        break;
+
+      case "*":
+        operation += operators[evt.key];
+        break;
+
+      case "/":
+        operation += operators[evt.key];
+        break;
+
+      default:
+        operation += evt.key;
+        break;
+    }
+    screenInput.textContent = operation;
+  }
+
+  // *delete screenInput
+  if (evt.key === "Backspace") {
+    const operationArray = operation.split("");
+    operationArray.splice(operationArray.length - 1, 1);
+    operation = operationArray.join("");
+    screenInput.textContent = operation;
+  } else if (evt.key === "Escape") {
+    operation = "";
+    screenInput.textContent = "";
+    screenResult.textContent = "";
+  }
+
+  //* calculate
+  if (evt.key === "Enter") {
+    const inputArray = parseStringToArray(operation);
+    getOperation(inputArray);
+    screenResult.textContent = inputArray.join("");
+  }
+});
